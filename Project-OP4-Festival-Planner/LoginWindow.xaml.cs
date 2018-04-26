@@ -23,5 +23,29 @@ namespace Project_OP4_Festival_Planner
         {
             InitializeComponent();
         }
+
+        private DatabaseConnection dbconnection = new DatabaseConnection();
+        private void Btlogin_Click(object sender, RoutedEventArgs e)
+        {
+            string username = tbGebruikersnaam.Text;
+            string password = pwbPassword.Password;
+            if (dbconnection.login(username, password) == true)
+            {
+                // Mag naar nieuw window
+                PlannerWindow PW = new PlannerWindow();
+                this.Hide();
+                PW.ShowDialog();
+                this.Show();
+
+            }
+            else
+            {
+                // maakt de border van de textbox en password box rood.
+                tbGebruikersnaam.BorderBrush = Brushes.Red;
+                tbGebruikersnaam.BorderThickness = new Thickness(2);
+                pbWachtwoord.BorderBrush = Brushes.Red;
+                pwbWachtwoord.BorderThickness = new Thickness(2);
+            }
+        }
     }
 }
