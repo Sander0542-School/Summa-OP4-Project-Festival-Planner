@@ -19,12 +19,13 @@ namespace Project_OP4_Festival_Planner
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private DatabaseConnection dbConnection = new DatabaseConnection();
+        
         public LoginWindow()
         {
             InitializeComponent();
         }
-
-        private DatabaseConnection dbconnection = new DatabaseConnection();
+        
         private void Btlogin_Click(object sender, RoutedEventArgs e)
         {
             string username = tbGebruikersnaam.Text;
