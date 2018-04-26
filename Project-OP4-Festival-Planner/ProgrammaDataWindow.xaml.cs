@@ -15,13 +15,11 @@ using System.Windows.Shapes;
 namespace Project_OP4_Festival_Planner
 {
     /// <summary>
-    /// Interaction logic for PlannerWindow.xaml
+    /// Interaction logic for ProgrammaDataWindow.xaml
     /// </summary>
-    public partial class PlannerWindow : Window
+    public partial class ProgrammaDataWindow : Window
     {
-        private DatabaseConnection dbConnection = new DatabaseConnection();
-
-        public PlannerWindow()
+        public ProgrammaDataWindow()
         {
             InitializeComponent();
         }
