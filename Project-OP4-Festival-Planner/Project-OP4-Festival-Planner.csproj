@@ -71,10 +71,24 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ProgrammaDataWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgrammasWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PlannerWindow.xaml.cs">
       <DependentUpon>PlannerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgrammaDataWindow.xaml.cs">
+      <DependentUpon>ProgrammaDataWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgrammasWindow.xaml.cs">
+      <DependentUpon>ProgrammasWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
