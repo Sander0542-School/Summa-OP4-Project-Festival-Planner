@@ -8,5 +8,6 @@ namespace Project_OP4_Festival_Planner
 {
     class DatabaseConnection
     {
+
     }
 }

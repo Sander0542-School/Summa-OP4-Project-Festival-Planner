@@ -19,9 +19,15 @@ namespace Project_OP4_Festival_Planner
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private DatabaseConnection dbConnection = new DatabaseConnection();
         public LoginWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
