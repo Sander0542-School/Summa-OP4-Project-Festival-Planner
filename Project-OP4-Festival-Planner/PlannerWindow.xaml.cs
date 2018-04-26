@@ -19,6 +19,8 @@ namespace Project_OP4_Festival_Planner
     /// </summary>
     public partial class PlannerWindow : Window
     {
+        private DatabaseConnection dbConnection = new DatabaseConnection();
+
         public PlannerWindow()
         {
             InitializeComponent();
