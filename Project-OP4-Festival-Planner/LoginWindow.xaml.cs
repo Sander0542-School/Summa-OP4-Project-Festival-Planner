@@ -34,9 +34,8 @@ namespace Project_OP4_Festival_Planner
             {
                 // Mag naar nieuw window
                 PlannerWindow PW = new PlannerWindow();
-                this.Hide();
-                PW.ShowDialog();
-                this.Show();
+                PW.Show();
+                this.Close();
 
             }
             else
