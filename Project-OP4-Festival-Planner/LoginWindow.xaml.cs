@@ -36,7 +36,6 @@ namespace Project_OP4_Festival_Planner
                 PlannerWindow PW = new PlannerWindow();
                 PW.Show();
                 this.Close();
-
             }
             else
             {
