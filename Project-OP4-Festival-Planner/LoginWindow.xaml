@@ -8,7 +8,7 @@
         Title="LoginWindow" Height="300" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="#333">
         <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="139,62,0,0" TextWrapping="Wrap" Text="Gebruikernaam" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="tbGebuikersnaam" HorizontalAlignment="Left" Height="23" Margin="139,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbGebruikersnaam" HorizontalAlignment="Left" Height="23" Margin="139,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="139,119,0,0" TextWrapping="Wrap" Text="Wachtwoord" VerticalAlignment="Top" Width="120"/>
         <PasswordBox Name="pwbWachtwoord" HorizontalAlignment="Left" Margin="139,140,0,0" VerticalAlignment="Top" Width="120" Height="23"/>
         <Button Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="139,187,0,0" VerticalAlignment="Top" Width="120" Click="btnLogin_Click"/>

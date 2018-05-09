@@ -29,8 +29,8 @@ namespace Project_OP4_Festival_Planner
         private void Btlogin_Click(object sender, RoutedEventArgs e)
         {
             string username = tbGebruikersnaam.Text;
-            string password = pwbPassword.Password;
-            if (dbconnection.login(username, password) == true)
+            string password = pwbWachtwoord.Password;
+            if (dbConnection.login(username, password) == true)
             {
                 // Mag naar nieuw window
                 PlannerWindow PW = new PlannerWindow();
@@ -44,7 +44,7 @@ namespace Project_OP4_Festival_Planner
                 // maakt de border van de textbox en password box rood.
                 tbGebruikersnaam.BorderBrush = Brushes.Red;
                 tbGebruikersnaam.BorderThickness = new Thickness(2);
-                pbWachtwoord.BorderBrush = Brushes.Red;
+                pwbWachtwoord.BorderBrush = Brushes.Red;
                 pwbWachtwoord.BorderThickness = new Thickness(2);
             }
         }
