@@ -26,11 +26,11 @@ namespace Project_OP4_Festival_Planner
             InitializeComponent();
         }
         
-        private void Btlogin_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             string username = tbGebruikersnaam.Text;
             string password = pwbWachtwoord.Password;
-            if (dbConnection.login(username, password) == true)
+            if (dbConnection.Login(username, password) == true)
             {
                 // Mag naar nieuw window
                 PlannerWindow PW = new PlannerWindow();
