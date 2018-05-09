@@ -22,6 +22,11 @@ namespace Project_OP4_Festival_Planner
         public ProgrammasWindow()
         {
             InitializeComponent();
+
+            ListBoxItem lbBand = new ListBoxItem();
+
+            lbBand.Name = "lbBand";
+            lbBand.Content = 
         }
     }
 }
