@@ -22,6 +22,20 @@ namespace Project_OP4_Festival_Planner
         public ProgrammaDataWindow()
         {
             InitializeComponent();
+
+            List<BandItem> items = new List<BandItem>();
+            for (int i = 0; i < 40; i++)
+            {
+                items.Add(new BandItem() { Title = "Sander", Time = "14:00 - 15:30" });
+            }
+
+            lbProgramms.ItemsSource = items;
         }
+    }
+
+    public class BandItem
+    {
+        public string Title { get; set; }
+        public string Time { get; set; }
     }
 }
