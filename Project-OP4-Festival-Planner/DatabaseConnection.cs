@@ -41,7 +41,7 @@ namespace Project_OP4_Festival_Planner
 
             return bResult;
         }
-        
+
         public DataTable getProgrammas()
         {
             conn.Open();
@@ -111,6 +111,7 @@ namespace Project_OP4_Festival_Planner
 
             return dataTable;
         }
+
         public DataTable getAllBands()
         {
             conn.Open();
@@ -120,28 +121,30 @@ namespace Project_OP4_Festival_Planner
 
             MySqlDataReader reader = command.ExecuteReader();
 
-            DataTable dt = new DataTable();
-            dt.Load(reader);
+            DataTable dataTable = new DataTable();
+            dataTable.Load(reader);
 
             conn.Close();
 
-            return dt;
+            return dataTable;
         }
+
         public DataTable getBandData(string sBandID)
         {
             conn.Open();
 
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT * FROM programma_data WHERE bandID = " + sBandID + ";";
+            command.CommandText = "SELECT * FROM programma_data WHERE bandID = @bID;";
+            command.Parameters.AddWithValue("@bID", sBandID);
 
             MySqlDataReader reader = command.ExecuteReader();
 
-            DataTable dt = new DataTable();
-            dt.Load(reader);
+            DataTable dataTable = new DataTable();
+            dataTable.Load(reader);
 
             conn.Close();
 
-            return dt;
+            return dataTable;
         }
     }
 }

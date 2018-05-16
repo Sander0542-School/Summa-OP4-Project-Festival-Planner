@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_OP4_Festival_Planner"
         mc:Ignorable="d"
-<<<<<<< HEAD
         Title="PlannerWindow" Height="450" Width="800">
     <Grid Background="#333">
         <StackPanel Margin="100">
@@ -29,11 +28,5 @@
                 <Button Name="btnEind" Content="Verander" Width="120" Margin="25,0"/>
             </StackPanel>
         </StackPanel>
-=======
-        Title="PlannerWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    
-    <Grid>
-        
->>>>>>> 31a5e5cf91d47cde2730626c2fbb7f7eb5243715
     </Grid>
 </Window>
