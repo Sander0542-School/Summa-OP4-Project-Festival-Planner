@@ -22,6 +22,45 @@ namespace Project_OP4_Festival_Planner
         public Bands()
         {
             InitializeComponent();
+            CheckBand();
+        }
+
+        public void CheckBand()
+        {
+            if (bandID == 0)
+            {
+                Button btnCreate = new Button();
+
+                btnCreate.Content = "Voeg Band Toe";
+                btnCreate.Name = "btnCreate";
+                btnCreate.Click += btnCreate_Click;
+
+
+                spButton.Children.Add(btnCreate);
+            }
+            else
+            {
+                Button btnUpdate = new Button();
+
+                btnUpdate.Content = "Update Band";
+                btnUpdate.Name = "btnUpdate";
+                btnUpdate.Click += btnUpdate_Click;
+
+
+                spButton.Children.Add(btnUpdate);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            string sBandName = tbBandName.Text;
+            string sBandGenre = tbBandGenre.Text;
+        }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            string sBandName = tbBandName.Text;
+            string sBandGenre = tbBandGenre.Text;
         }
     }
 }
