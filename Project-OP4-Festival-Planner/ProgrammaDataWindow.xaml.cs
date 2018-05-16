@@ -35,6 +35,8 @@ namespace Project_OP4_Festival_Planner
 
             lbProgramms.ItemsSource = dataTableProgramma.DefaultView;
 
+            lbProgramms.SelectedIndex = 0;
+
             DataTable dataTablePodium = dbConnection.getPodiumInfo(programmaID);
 
             tbPodiumNaam.Text = "Podium: " + dataTablePodium.Rows[0]["podiumNaam"].ToString();
@@ -61,6 +63,12 @@ namespace Project_OP4_Festival_Planner
             ListBox listBox = (ListBox)sender;
 
             LoadProgrammaData(listBox.SelectedValue.ToString());
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            ProgrammasWindow programmasWindow = new ProgrammasWindow();
+            programmasWindow.Show();
         }
     }
 }
