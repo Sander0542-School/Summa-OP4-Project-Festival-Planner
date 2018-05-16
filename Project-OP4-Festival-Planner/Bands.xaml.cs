@@ -36,7 +36,7 @@ namespace Project_OP4_Festival_Planner
                 btnCreate.Click += btnCreate_Click;
 
 
-                spButton.Children.Add(btnCreate);
+                //spButton.Children.Add(btnCreate);
             }
             else
             {
@@ -47,7 +47,7 @@ namespace Project_OP4_Festival_Planner
                 btnUpdate.Click += btnUpdate_Click;
 
 
-                spButton.Children.Add(btnUpdate);
+                //spButton.Children.Add(btnUpdate);
             }
         }
 

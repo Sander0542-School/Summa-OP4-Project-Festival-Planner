@@ -24,22 +24,25 @@ namespace Project_OP4_Festival_Planner
         {
             InitializeComponent();
 
-            //List<ProgrammaItem> items = new List<ProgrammaItem>();
-            //for (int i = 0; i < 40; i++)
-            //{
-            //    items.Add(new ProgrammaItem() { Title = "Naam", Podium = "Podium 1", Tijd = "10:00 - 18:00" });
-            //}
-
-            //lbProgrammas.ItemsSource = items;
 
             lbProgrammas.ItemsSource = dbConnection.getProgrammas().DefaultView;
+            
         }
-    }
 
-    public class ProgrammaItem
-    {
-        public string Title { get; set; }
-        public string Podium { get; set; }
-        public string Tijd { get; set; }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PlannerWindow plannerWindow = new PlannerWindow();
+            plannerWindow.Show();
+            this.Close();
+        }
+
+        private void lbProgrammas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+
+            ProgrammaDataWindow dataWindow = new ProgrammaDataWindow(listBox.SelectedValue.ToString());
+            dataWindow.Show();
+            this.Close();
+        }
     }
 }

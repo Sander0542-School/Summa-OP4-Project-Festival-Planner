@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_OP4_Festival_Planner"
         mc:Ignorable="d"
-        Title="ProgrammasWindow" Height="450" Width="800">
+        Title="ProgrammasWindow" Height="450" Width="800" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -29,7 +29,7 @@
             <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="1" Grid.Column="2" Text="Programma" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
-        <ListBox x:Name="lbProgrammas" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox x:Name="lbProgrammas" Grid.Row="3" Grid.Column="1" SelectedValuePath="programmaID" Grid.ColumnSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="lbProgrammas_SelectionChanged">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel IsItemsHost="True"/>
@@ -38,13 +38,14 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Foreground="White" FontSize="18" Text="{Binding Title}"/>
-                        <TextBlock Foreground="White" FontSize="14" Text="{Binding Podium}"/>
-                        <TextBlock Foreground="White" FontSize="14" Text="{Binding Tijd}"/>
+                        <TextBlock Foreground="White" FontSize="18" Text="{Binding programmaNaam}"/>
+                        <TextBlock Foreground="White" FontSize="14" Text="{Binding podiumNaam}"/>
+                        <TextBlock Foreground="White" FontSize="14" Text="{Binding beginTijd}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Button Content="Nieuwe band" Grid.Column="3" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" VerticalAlignment="Top" Width="218" Height="40" Click="Button_Click"/>
 
 
     </Grid>
