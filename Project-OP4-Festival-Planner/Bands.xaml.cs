@@ -22,10 +22,10 @@ namespace Project_OP4_Festival_Planner
         public Bands()
         {
             InitializeComponent();
-            CheckBand();
+            CheckBand(0);
         }
 
-        public void CheckBand()
+        public void CheckBand(int bandID)
         {
             if (bandID == 0)
             {

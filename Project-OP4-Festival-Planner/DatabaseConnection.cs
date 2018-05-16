@@ -42,13 +42,12 @@ namespace Project_OP4_Festival_Planner
             return bResult;
         }
         
-        public DataTable Programma()
+        public DataTable getProgrammas()
         {
             conn.Open();
 
             MySqlCommand sqlCommand = conn.CreateCommand();
-            sqlCommand.CommandText = "SELECT podiums.naam as podiumNaam, programmas.aanvangsTijd FROM bands INNER JOIN podiums ON podiums.id = bands.id INNER JOIN programmas ON programmas.id = bands.id;";
-            
+            sqlCommand.CommandText = "SELECT podiums.naam as podiumNaam, bands.naam as bandNaam, CONCAT(HOUR(opbouwTijd),':',CASE WHEN (MINUTE(opbouwTijd) < 10) THEN CONCAT('0',MINUTE(opbouwTijd)) ELSE MINUTE(opbouwTijd) END) as beginTijd , CONCAT(HOUR(afbouwTijd),':',CASE WHEN (MINUTE(afbouwTijd) < 10) THEN CONCAT('0',MINUTE(afbouwTijd)) ELSE MINUTE(afbouwTijd) END) as eindTijd FROM programmas INNER JOIN podiums ON podiums.id = programmas.id INNER JOIN bands ON programmas.id = bands.id;";
 
             MySqlDataReader dataReader = sqlCommand.ExecuteReader();
 
@@ -65,8 +64,26 @@ namespace Project_OP4_Festival_Planner
             conn.Open();
 
             MySqlCommand sqlCommand = conn.CreateCommand();
-            sqlCommand.CommandText = "SELECT bands.naam as bandNaam, bands.genre as bandGenre, bandPrijs, beginTijd, eindTijd FROM programma_data INNER JOIN bands ON programma_data.bandID = bands.id WHERE programmaID = @pID";
+            sqlCommand.CommandText = "SELECT programmaID, bands.naam as bandNaam, CONCAT(HOUR(beginTijd),':',CASE WHEN (MINUTE(beginTijd) < 10) THEN CONCAT('0',MINUTE(beginTijd)) ELSE MINUTE(beginTijd) END) as tijd FROM programma_data INNER JOIN bands ON programma_data.bandID = bands.id WHERE programmaID = @pID";
             sqlCommand.Parameters.AddWithValue("@pID", iProgrammaID);
+
+            MySqlDataReader dataReader = sqlCommand.ExecuteReader();
+
+            DataTable dataTable = new DataTable();
+            dataTable.Load(dataReader);
+
+            conn.Close();
+
+            return dataTable;
+        }
+
+        public DataTable getProgrammaDataInfo(int iProgrammaDataID)
+        {
+            conn.Open();
+
+            MySqlCommand sqlCommand = conn.CreateCommand();
+            sqlCommand.CommandText = "SELECT bands.naam as bandNaam, bands.genre as bandGenre, bandPrijs, beginTijd, eindTijd FROM programma_data INNER JOIN bands ON programma_data.bandID = bands.id WHERE programma_data.id = @pID";
+            sqlCommand.Parameters.AddWithValue("@pID", iProgrammaDataID);
 
             MySqlDataReader dataReader = sqlCommand.ExecuteReader();
 

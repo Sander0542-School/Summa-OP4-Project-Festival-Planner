@@ -24,10 +24,6 @@ namespace Project_OP4_Festival_Planner
         {
             InitializeComponent();
 
-            ListBoxItem lbBand = new ListBoxItem();
-
-            lbBand.Name = "lbBand";
-
             //List<ProgrammaItem> items = new List<ProgrammaItem>();
             //for (int i = 0; i < 40; i++)
             //{
@@ -36,7 +32,7 @@ namespace Project_OP4_Festival_Planner
 
             //lbProgrammas.ItemsSource = items;
 
-
+            lbProgrammas.ItemsSource = dbConnection.getProgrammas().DefaultView;
         }
     }
 

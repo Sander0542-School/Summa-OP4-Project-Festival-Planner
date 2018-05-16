@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,23 +20,26 @@ namespace Project_OP4_Festival_Planner
     /// </summary>
     public partial class ProgrammaDataWindow : Window
     {
+        private DatabaseConnection dbConnection = new DatabaseConnection();
+
         public ProgrammaDataWindow()
         {
             InitializeComponent();
 
-            List<BandItem> items = new List<BandItem>();
-            for (int i = 0; i < 40; i++)
-            {
-                items.Add(new BandItem() { Title = "Sander", Time = "14:00 - 15:30" });
-            }
-
-            lbProgramms.ItemsSource = items;
+            LoadProgramma(1);
         }
-    }
 
-    public class BandItem
-    {
-        public string Title { get; set; }
-        public string Time { get; set; }
+        public void LoadProgramma(int programmaID)
+        {
+            DataTable datatable = dbConnection.getProgrammaData(programmaID);
+
+            lbProgramms.ItemsSource = datatable.DefaultView;
+        }
+
+        private void lbProgramms_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+            MessageBox.Show(listBox.SelectedValuePath);
+        }
     }
 }
