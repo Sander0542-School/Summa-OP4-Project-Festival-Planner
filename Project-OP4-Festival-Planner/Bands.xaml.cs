@@ -19,15 +19,19 @@ namespace Project_OP4_Festival_Planner
     /// </summary>
     public partial class Bands : Window
     {
+
+        private DatabaseConnection dbConnection = new DatabaseConnection();
+
+        int ibandID = 6;
         public Bands()
         {
             InitializeComponent();
-            CheckBand(0);
+            CheckBand();
         }
 
-        public void CheckBand(int bandID)
+        public void CheckBand()
         {
-            if (bandID == 0)
+            if (ibandID == 0)
             {
                 Button btnCreate = new Button();
 
@@ -36,7 +40,7 @@ namespace Project_OP4_Festival_Planner
                 btnCreate.Click += btnCreate_Click;
 
 
-                //spButton.Children.Add(btnCreate);
+                spButton.Children.Add(btnCreate);
             }
             else
             {
@@ -47,7 +51,7 @@ namespace Project_OP4_Festival_Planner
                 btnUpdate.Click += btnUpdate_Click;
 
 
-                //spButton.Children.Add(btnUpdate);
+                spButton.Children.Add(btnUpdate);
             }
         }
 
@@ -55,12 +59,22 @@ namespace Project_OP4_Festival_Planner
         {
             string sBandName = tbBandName.Text;
             string sBandGenre = tbBandGenre.Text;
+            dbConnection.UpdateBands(sBandName, sBandGenre, ibandID);
+            MessageBox.Show("Band succesvol Gewijzigd");
+            ProgrammaDataWindow PdW = new ProgrammaDataWindow();
+            PdW.Show();
+            this.Close();
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             string sBandName = tbBandName.Text;
             string sBandGenre = tbBandGenre.Text;
+            dbConnection.InsertBands(sBandName, sBandGenre);
+            MessageBox.Show("Band succesvol toegevoed");
+            ProgrammaDataWindow PdW = new ProgrammaDataWindow();
+            PdW.Show();
+            this.Close();
         }
     }
 }

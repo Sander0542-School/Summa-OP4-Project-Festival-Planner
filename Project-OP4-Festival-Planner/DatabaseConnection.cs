@@ -146,5 +146,33 @@ namespace Project_OP4_Festival_Planner
 
             return dataTable;
         }
+
+        public void InsertBands(string sBandName, string sBandGenre)
+        {
+            conn.Open();
+
+            MySqlCommand sqlCommand = conn.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO bands (naam, genre) VALUES(@BandName, @BandGenre)";
+            sqlCommand.Parameters.AddWithValue("@BandName", sBandName);
+            sqlCommand.Parameters.AddWithValue("@BandGenre", sBandGenre);
+
+            sqlCommand.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public void UpdateBands(string sBandName, string sBandGenre, int iBandID)
+        {
+            conn.Open();
+
+            MySqlCommand sqlCommand = conn.CreateCommand();
+            sqlCommand.CommandText = "UPDATE bands SET naam = @BandName, genre = @BandGenre WHERE id =" + iBandID;
+            sqlCommand.Parameters.AddWithValue("@BandName", sBandName);
+            sqlCommand.Parameters.AddWithValue("@BandGenre", sBandGenre);
+
+            sqlCommand.ExecuteNonQuery();
+
+            conn.Close();
+        }
     }
 }
