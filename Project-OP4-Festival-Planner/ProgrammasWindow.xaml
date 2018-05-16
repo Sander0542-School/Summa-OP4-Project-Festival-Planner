@@ -6,9 +6,18 @@
         xmlns:local="clr-namespace:Project_OP4_Festival_Planner"
         mc:Ignorable="d"
         Title="ProgrammasWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
@@ -19,20 +28,23 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Vertical">
-            <TextBlock Text="Programma" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-            <TextBlock Text="Band" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
-            <ListBox Name="lbBand"/>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical">
-            <TextBlock Text="Podium" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Vertical">
-            <TextBlock Text="Begin tijd" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
-        </StackPanel>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="Programma" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+        <ListBox x:Name="lbProgrammas" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Foreground="White" FontSize="18" Text="{Binding Title}"/>
+                        <TextBlock Foreground="White" FontSize="14" Text="{Binding Podium}"/>
+                        <TextBlock Foreground="White" FontSize="14" Text="{Binding Tijd}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
 
     </Grid>

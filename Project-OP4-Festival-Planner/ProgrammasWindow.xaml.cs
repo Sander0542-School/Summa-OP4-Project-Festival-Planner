@@ -19,6 +19,7 @@ namespace Project_OP4_Festival_Planner
     /// </summary>
     public partial class ProgrammasWindow : Window
     {
+        DatabaseConnection dbConnection = new DatabaseConnection();
         public ProgrammasWindow()
         {
             InitializeComponent();
@@ -26,7 +27,23 @@ namespace Project_OP4_Festival_Planner
             ListBoxItem lbBand = new ListBoxItem();
 
             lbBand.Name = "lbBand";
-            lbBand.Content = 
+
+            //List<ProgrammaItem> items = new List<ProgrammaItem>();
+            //for (int i = 0; i < 40; i++)
+            //{
+            //    items.Add(new ProgrammaItem() { Title = "Naam", Podium = "Podium 1", Tijd = "10:00 - 18:00" });
+            //}
+
+            //lbProgrammas.ItemsSource = items;
+
+
         }
+    }
+
+    public class ProgrammaItem
+    {
+        public string Title { get; set; }
+        public string Podium { get; set; }
+        public string Tijd { get; set; }
     }
 }
