@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_OP4_Festival_Planner"
         mc:Ignorable="d"
-        Title="ProgrammaDataWindow" Height="600" Width="1100">
+        Title="ProgrammaDataWindow" Height="600" Width="1100" ResizeMode="CanMinimize">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -35,7 +35,7 @@
             <TextBlock x:Name="tbOpbouwTijd" Text="Opbouw Tijd" FontSize="14" Margin="0,0,0,5"/>
             <TextBlock x:Name="tbAfbouwTijd" Text="Afbouw Tijd" FontSize="14" Margin="0,0,0,5"/>
         </StackPanel>
-        <ListBox x:Name="lbProgramms" Grid.Row="1" Grid.Column="3" SelectedValuePath="{Binding programmaID}" SelectionChanged="lbProgramms_SelectionChanged">
+        <ListBox x:Name="lbProgramms" Grid.Row="1" Grid.Column="3" SelectedValuePath="dataID" SelectionChanged="lbProgramms_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
