@@ -19,7 +19,6 @@ namespace Project_OP4_Festival_Planner
     /// </summary>
     public partial class Bands : Window
     {
-
         private DatabaseConnection dbConnection = new DatabaseConnection();
 
         int ibandID = 6;
@@ -61,8 +60,6 @@ namespace Project_OP4_Festival_Planner
             string sBandGenre = tbBandGenre.Text;
             dbConnection.UpdateBands(sBandName, sBandGenre, ibandID);
             MessageBox.Show("Band succesvol Gewijzigd");
-            ProgrammaDataWindow PdW = new ProgrammaDataWindow();
-            PdW.Show();
             this.Close();
         }
 
@@ -72,8 +69,6 @@ namespace Project_OP4_Festival_Planner
             string sBandGenre = tbBandGenre.Text;
             dbConnection.InsertBands(sBandName, sBandGenre);
             MessageBox.Show("Band succesvol toegevoed");
-            ProgrammaDataWindow PdW = new ProgrammaDataWindow();
-            PdW.Show();
             this.Close();
         }
     }
