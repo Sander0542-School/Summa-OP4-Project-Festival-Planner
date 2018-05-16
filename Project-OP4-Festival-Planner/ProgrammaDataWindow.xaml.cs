@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,23 +20,47 @@ namespace Project_OP4_Festival_Planner
     /// </summary>
     public partial class ProgrammaDataWindow : Window
     {
-        public ProgrammaDataWindow()
+        private DatabaseConnection dbConnection = new DatabaseConnection();
+
+        public ProgrammaDataWindow(string programmaID)
         {
             InitializeComponent();
 
-            List<BandItem> items = new List<BandItem>();
-            for (int i = 0; i < 40; i++)
-            {
-                items.Add(new BandItem() { Title = "Sander", Time = "14:00 - 15:30" });
-            }
-
-            lbProgramms.ItemsSource = items;
+            LoadProgrammas(programmaID);
         }
-    }
 
-    public class BandItem
-    {
-        public string Title { get; set; }
-        public string Time { get; set; }
+        public void LoadProgrammas(string programmaID)
+        {
+            DataTable dataTableProgramma = dbConnection.getProgrammaData(programmaID);
+
+            lbProgramms.ItemsSource = dataTableProgramma.DefaultView;
+
+            DataTable dataTablePodium = dbConnection.getPodiumInfo(programmaID);
+
+            tbPodiumNaam.Text = "Podium: " + dataTablePodium.Rows[0]["podiumNaam"].ToString();
+
+            tbGenres.Text = "Genres: " + dataTablePodium.Rows[0]["genres"].ToString();
+            tbOpbouwTijd.Text = "Opbouw Tijd: " + dataTablePodium.Rows[0]["opbouwTijd"].ToString();
+            tbAfbouwTijd.Text = "Afbouw Tijd: " + dataTablePodium.Rows[0]["afbouwTijd"].ToString();
+        }
+
+        public void LoadProgrammaData(string programmaInfoID)
+        {
+            DataTable dataTable = dbConnection.getProgrammaDataInfo(programmaInfoID);
+
+            tbBandNaam.Text = "Naam: " + dataTable.Rows[0]["bandNaam"].ToString();
+            tbBandGenre.Text = "Genre: " + dataTable.Rows[0]["bandGenre"].ToString();
+            tbBandKosten.Text = "Kosten: €" + dataTable.Rows[0]["bandPrijs"].ToString();
+
+            tbBeginTijd.Text = "Begin Tijd: " + dataTable.Rows[0]["beginTijd"].ToString();
+            tbEindTijd.Text = "Eind Tijd: " + dataTable.Rows[0]["eindTijd"].ToString();
+        }
+
+        private void lbProgramms_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+
+            LoadProgrammaData(listBox.SelectedValue.ToString());
+        }
     }
 }
