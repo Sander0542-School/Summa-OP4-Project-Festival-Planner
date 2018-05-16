@@ -6,7 +6,27 @@
         xmlns:local="clr-namespace:Project_OP4_Festival_Planner"
         mc:Ignorable="d"
         Title="PlannerWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="#333">
+        <StackPanel Margin="100">
+            <ComboBox Name="cbBands"  SelectedValue="id" DisplayMemberPath="naam" SelectionChanged="cbBands_SelectionChanged"/>
+        </StackPanel>
+        <TextBlock FontSize="22px" Foreground="White" HorizontalAlignment="Left" Margin="100,68,0,0" TextWrapping="Wrap" Text="Kies band" VerticalAlignment="Top" Height="27" Width="150"/>
+        <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Margin="155,151,135.6,161">
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <TextBlock Margin="25,0" Width="120" Foreground="White" TextWrapping="Wrap" Text="Podium"/>
+                <TextBlock Margin="25,0" Width="120" Foreground="White" TextWrapping="Wrap" Text="Aanvangstijd"/>
+                <TextBlock Margin="25,0" Width="120" Foreground="White" TextWrapping="Wrap" Text="Eindtijd"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="tbPodium" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="25,0"/>
+                <TextBox Name="tbAankomst" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="25,0"/>
+                <TextBox Name="tbEind" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="25,0"/>
+            </StackPanel>
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <Button Name="btnPodium" Width="120" Margin="25,0" Content="Verander"/>
+                <Button Name="btnAankomst" Content="Verander" Width="120" Margin="25,0"/>
+                <Button Name="btnEind" Content="Verander" Width="120" Margin="25,0"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

@@ -11,7 +11,7 @@ namespace Project_OP4_Festival_Planner
 {
     class DatabaseConnection
     {
-        private MySqlConnection conn = new MySqlConnection("Server=localhost;Database=festival;Uid=root;Pwd=");
+        private MySqlConnection conn = new MySqlConnection("Server=localhost;Database=festival;Uid=root;Pwd=;Convert Zero Datetime=True;");
 
         public bool Login(string sUsername, string sPassword)
         {
@@ -76,6 +76,38 @@ namespace Project_OP4_Festival_Planner
             conn.Close();
 
             return dataTable;
+        }
+        public DataTable getAllBands()
+        {
+            conn.Open();
+
+            MySqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT * FROM bands";
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+            conn.Close();
+
+            return dt;
+        }
+        public DataTable getBandData(string sBandID)
+        {
+            conn.Open();
+
+            MySqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT * FROM programma_data WHERE bandID = " + sBandID + ";";
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+            conn.Close();
+
+            return dt;
         }
     }
 }

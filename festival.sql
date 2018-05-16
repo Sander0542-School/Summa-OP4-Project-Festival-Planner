@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 apr 2018 om 14:54
+-- Gegenereerd op: 16 mei 2018 om 09:34
 -- Serverversie: 10.1.26-MariaDB
 -- PHP-versie: 7.1.8
 
@@ -37,6 +37,14 @@ CREATE TABLE `bands` (
   `genre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `bands`
+--
+
+INSERT INTO `bands` (`id`, `naam`, `genre`) VALUES
+(1, 'Jostiband', 'Hardstyle'),
+(2, 'Marco Borsato', 'Nederlands');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +57,13 @@ CREATE TABLE `logins` (
   `username` varchar(100) NOT NULL,
   `password` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `logins`
+--
+
+INSERT INTO `logins` (`id`, `username`, `password`) VALUES
+(1, '123', '123');
 
 -- --------------------------------------------------------
 
@@ -65,6 +80,13 @@ CREATE TABLE `podiums` (
   `afbouwTijd` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `podiums`
+--
+
+INSERT INTO `podiums` (`id`, `naam`, `genres`, `opbouwTijd`, `afbouwTijd`) VALUES
+(1, 'Jupiler', 'Hardstyle', '2018-05-09 10:03:41', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -78,6 +100,13 @@ CREATE TABLE `programmas` (
   `aanvangsTijd` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `eindTijd` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `programmas`
+--
+
+INSERT INTO `programmas` (`id`, `podiumID`, `aanvangsTijd`, `eindTijd`) VALUES
+(1, 1, '2018-05-09 10:03:49', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -94,6 +123,14 @@ CREATE TABLE `programma_data` (
   `eindTijd` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `bandPrijs` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `programma_data`
+--
+
+INSERT INTO `programma_data` (`id`, `programmaID`, `bandID`, `beginTijd`, `eindTijd`, `bandPrijs`) VALUES
+(1, 1, 1, '2018-05-09 10:04:30', '0000-00-00 00:00:00', 100),
+(2, 1, 2, '2018-05-09 10:05:09', '0000-00-00 00:00:00', 500);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -140,27 +177,27 @@ ALTER TABLE `programma_data`
 -- AUTO_INCREMENT voor een tabel `bands`
 --
 ALTER TABLE `bands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT voor een tabel `logins`
 --
 ALTER TABLE `logins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT voor een tabel `podiums`
 --
 ALTER TABLE `podiums`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT voor een tabel `programmas`
 --
 ALTER TABLE `programmas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT voor een tabel `programma_data`
 --
 ALTER TABLE `programma_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Beperkingen voor geëxporteerde tabellen
 --

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,19 @@ namespace Project_OP4_Festival_Planner
         public PlannerWindow()
         {
             InitializeComponent();
+
+            loadCombobox();
+        }
+        public void loadCombobox()
+        {
+            cbBands.ItemsSource = dbConnection.getAllBands().DefaultView;
+        }
+
+        private void cbBands_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataRowView dv = (DataRowView)cbBands.SelectedValue;
+            string sId = dv[0].ToString();
+            //dt.ItemsSource = dbConnection.getBandData(sId).DefaultView;
         }
     }
 }
