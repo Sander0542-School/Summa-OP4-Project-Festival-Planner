@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
                     xmlns:local="clr-namespace:Project_OP4_Festival_Planner">
 
     <Style TargetType="Grid">
@@ -12,6 +13,23 @@
 
     <Style TargetType="TextBlock">
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value="25"/>
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="Height" Value="25"/>
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="xctk:DateTimePicker">
+        <Setter Property="Format" Value="Custom"/>
+        <Setter Property="FormatString" Value="dd MMM yyyy hh:mm"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
     
 </ResourceDictionary>

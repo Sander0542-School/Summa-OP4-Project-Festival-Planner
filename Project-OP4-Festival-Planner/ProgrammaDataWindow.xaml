@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_OP4_Festival_Planner"
         mc:Ignorable="d"
-        Title="ProgrammaDataWindow" Height="600" Width="1100" ResizeMode="CanMinimize" Closed="Window_Closed" WindowStartupLocation="CenterScreen">
+        Title="Programma Gegevens" Height="600" Width="1100" ResizeMode="CanMinimize" Closed="Window_Closed" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

@@ -31,9 +31,8 @@ namespace Project_OP4_Festival_Planner
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PlannerWindow plannerWindow = new PlannerWindow();
-            plannerWindow.Show();
-            this.Close();
+            NewProgrammaWindow newProgrammaWindow = new NewProgrammaWindow(0);
+            newProgrammaWindow.ShowDialog();
         }
 
         private void lbProgrammas_SelectionChanged(object sender, SelectionChangedEventArgs e)

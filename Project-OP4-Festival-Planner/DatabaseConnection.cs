@@ -129,6 +129,23 @@ namespace Project_OP4_Festival_Planner
             return dataTable;
         }
 
+        public DataTable getAllPodiums()
+        {
+            conn.Open();
+
+            MySqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT * FROM podiums";
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            DataTable dataTable = new DataTable();
+            dataTable.Load(reader);
+
+            conn.Close();
+
+            return dataTable;
+        }
+
         public DataTable getBandData(string sBandID)
         {
             conn.Open();
