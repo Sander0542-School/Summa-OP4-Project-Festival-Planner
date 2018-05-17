@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_OP4_Festival_Planner"
         mc:Ignorable="d"
-        Title="ProgrammasWindow" Height="450" Width="800" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="Programmas" Height="450" Width="800" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,10 +16,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="10"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40"/>
@@ -28,8 +28,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="1" Grid.Column="2" Text="Programma" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
-        <ListBox x:Name="lbProgrammas" Grid.Row="3" Grid.Column="1" SelectedValuePath="programmaID" Grid.ColumnSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="lbProgrammas_SelectionChanged">
+        <ListBox x:Name="lbProgrammas" Grid.Row="1" Grid.Column="1" SelectedValuePath="programmaID" Grid.ColumnSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="lbProgrammas_SelectionChanged">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel IsItemsHost="True"/>
@@ -45,6 +44,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Nieuw Programma" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Top" Width="200" Height="40" Click="Button_Click"/>
+        <Button Content="Nieuw Programma" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Top" Width="200" Height="40" Click="Button_Click"/>
     </Grid>
 </Window>
