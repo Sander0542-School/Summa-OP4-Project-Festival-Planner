@@ -19,14 +19,31 @@ namespace Project_OP4_Festival_Planner
     /// </summary>
     public partial class PodiumWindow : Window
     {
+        private DatabaseConnection dbConnection = new DatabaseConnection();
+
         public PodiumWindow()
         {
             InitializeComponent();
         }
 
-        private void btnMaakProgramma_Click(object sender, RoutedEventArgs e)
+        private void btnMaakPodium_Click(object sender, RoutedEventArgs e)
         {
-
+            if (tbProgrammaNaam.Text.Length > 0 && tbGenres.Text.Length > 0 && dtpAfbouwTijd.Text.Length > 0 && dtpOpbouwTijd.Text.Length > 0)
+            {
+                if (dbConnection.InsertPodium(tbProgrammaNaam.Text, tbGenres.Text, dtpOpbouwTijd.Text, dtpAfbouwTijd.Text))
+                {
+                    MessageBox.Show("Het nieuwe podium is toegevoegd", "Podium opgeslagen", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Kon het podium niet opslaan", "Kon niet opslaan", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Je moet alle gegevens invullen om een podium te kunnen toeveogen", "Verkeerde Gegevens", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

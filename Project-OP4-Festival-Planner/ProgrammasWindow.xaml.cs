@@ -24,9 +24,12 @@ namespace Project_OP4_Festival_Planner
         {
             InitializeComponent();
 
+            loadProgrammas();
+        }
 
+        private void loadProgrammas()
+        {
             lbProgrammas.ItemsSource = dbConnection.getProgrammas().DefaultView;
-            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,7 +44,13 @@ namespace Project_OP4_Festival_Planner
 
             ProgrammaDataWindow dataWindow = new ProgrammaDataWindow(listBox.SelectedValue.ToString());
             dataWindow.Show();
+            dataWindow.Closed += ProgrammaDataWindow_Closed;
             this.Close();
+        }
+
+        private void ProgrammaDataWindow_Closed(object sender, EventArgs e)
+        {
+            loadProgrammas();
         }
     }
 }

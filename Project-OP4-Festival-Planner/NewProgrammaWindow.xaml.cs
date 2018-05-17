@@ -32,7 +32,12 @@ namespace Project_OP4_Festival_Planner
             {
                 bNewProgramma = true;
             }
-            
+
+            loadPodiums();
+        }
+
+        private void loadPodiums()
+        {
             cbPodiums.ItemsSource = dbConnection.getAllPodiums().DefaultView;
         }
 
@@ -44,7 +49,13 @@ namespace Project_OP4_Festival_Planner
         private void btnNewPodium_Click(object sender, RoutedEventArgs e)
         {
             PodiumWindow podiumWindow = new PodiumWindow();
+            podiumWindow.Closed += PodiumWindow_Closed;
             podiumWindow.ShowDialog();
+        }
+
+        private void PodiumWindow_Closed(object sender, EventArgs e)
+        {
+            loadPodiums();
         }
     }
 }

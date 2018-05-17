@@ -164,32 +164,87 @@ namespace Project_OP4_Festival_Planner
             return dataTable;
         }
 
-        public void InsertBands(string sBandName, string sBandGenre)
+        public bool InsertPodium(string sPodiumName, string sGenres, string sOpbouwTijd, string sAfbouwTijd)
         {
-            conn.Open();
+            bool bSuccess;
+            try
+            {
+                conn.Open();
 
-            MySqlCommand sqlCommand = conn.CreateCommand();
-            sqlCommand.CommandText = "INSERT INTO bands (naam, genre) VALUES(@BandName, @BandGenre)";
-            sqlCommand.Parameters.AddWithValue("@BandName", sBandName);
-            sqlCommand.Parameters.AddWithValue("@BandGenre", sBandGenre);
+                MySqlCommand sqlCommand = conn.CreateCommand();
+                sqlCommand.CommandText = "INSERT INTO podiums (naam, genres, opbouwTijd, afbouwTijd) VALUES (@naam, @genres, STR_TO_DATE(@opbouwTijd,'%d %b %Y %k:%i'), STR_TO_DATE(@afbouwTijd,'%d %b %Y %k:%i'))";
+                sqlCommand.Parameters.AddWithValue("@naam", sPodiumName);
+                sqlCommand.Parameters.AddWithValue("@genres", sGenres);
+                sqlCommand.Parameters.AddWithValue("@opbouwTijd", sOpbouwTijd);
+                sqlCommand.Parameters.AddWithValue("@afbouwTijd", sAfbouwTijd);
 
-            sqlCommand.ExecuteNonQuery();
+                sqlCommand.ExecuteNonQuery();
 
-            conn.Close();
+                bSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                bSuccess = false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return bSuccess;
         }
 
-        public void UpdateBands(string sBandName, string sBandGenre, int iBandID)
+        public bool InsertBands(string sBandName, string sBandGenre)
         {
-            conn.Open();
+            bool bSuccess;
+            try
+            {
+                conn.Open();
 
-            MySqlCommand sqlCommand = conn.CreateCommand();
-            sqlCommand.CommandText = "UPDATE bands SET naam = @BandName, genre = @BandGenre WHERE id =" + iBandID;
-            sqlCommand.Parameters.AddWithValue("@BandName", sBandName);
-            sqlCommand.Parameters.AddWithValue("@BandGenre", sBandGenre);
+                MySqlCommand sqlCommand = conn.CreateCommand();
+                sqlCommand.CommandText = "INSERT INTO bands (naam, genre) VALUES(@BandName, @BandGenre)";
+                sqlCommand.Parameters.AddWithValue("@BandName", sBandName);
+                sqlCommand.Parameters.AddWithValue("@BandGenre", sBandGenre);
 
-            sqlCommand.ExecuteNonQuery();
+                sqlCommand.ExecuteNonQuery();
 
-            conn.Close();
+                bSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                bSuccess = false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return bSuccess;
+        }
+
+        public bool UpdateBands(string sBandName, string sBandGenre, int iBandID)
+        {
+            bool bSuccess;
+            try
+            {
+                conn.Open();
+
+                MySqlCommand sqlCommand = conn.CreateCommand();
+                sqlCommand.CommandText = "UPDATE bands SET naam = @BandName, genre = @BandGenre WHERE id =" + iBandID;
+                sqlCommand.Parameters.AddWithValue("@BandName", sBandName);
+                sqlCommand.Parameters.AddWithValue("@BandGenre", sBandGenre);
+
+                sqlCommand.ExecuteNonQuery();
+
+                bSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                bSuccess = false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return bSuccess;
         }
     }
 }
