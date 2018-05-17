@@ -29,7 +29,7 @@
             <TextBlock Text="Programma Naam" Margin="0,0,0,5"/>
             <TextBox x:Name="tbProgrammaNaam" Height="25" VerticalContentAlignment="Center" Margin="0,0,0,20"/>
             <TextBlock Text="Podium" Margin="0,0,0,5"/>
-            <ComboBox x:Name="cbPodiums" SelectedValue="id" DisplayMemberPath="naam" Margin="0,0,0,20"/>
+            <ComboBox x:Name="cbPodiums" SelectedValuePath="id" DisplayMemberPath="naam" Margin="0,0,0,20"/>
             <Grid Margin="0,0,0,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>

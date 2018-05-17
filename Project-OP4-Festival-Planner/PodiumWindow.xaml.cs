@@ -28,9 +28,9 @@ namespace Project_OP4_Festival_Planner
 
         private void btnMaakPodium_Click(object sender, RoutedEventArgs e)
         {
-            if (tbProgrammaNaam.Text.Length > 0 && tbGenres.Text.Length > 0 && dtpAfbouwTijd.Text.Length > 0 && dtpOpbouwTijd.Text.Length > 0)
+            if (tbPodiumNaam.Text.Length > 0 && tbGenres.Text.Length > 0 && dtpAfbouwTijd.Text.Length > 0 && dtpOpbouwTijd.Text.Length > 0)
             {
-                if (dbConnection.InsertPodium(tbProgrammaNaam.Text, tbGenres.Text, dtpOpbouwTijd.Text, dtpAfbouwTijd.Text))
+                if (dbConnection.InsertPodium(tbPodiumNaam.Text, tbGenres.Text, dtpOpbouwTijd.Text, dtpAfbouwTijd.Text))
                 {
                     MessageBox.Show("Het nieuwe podium is toegevoegd", "Podium opgeslagen", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();

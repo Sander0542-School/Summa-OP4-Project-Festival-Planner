@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
             <TextBlock Text="Podium Naam" Margin="0,0,0,5"/>
-            <TextBox x:Name="tbProgrammaNaam" Height="25" VerticalContentAlignment="Center" Margin="0,0,0,20"/>
+            <TextBox x:Name="tbPodiumNaam" Height="25" VerticalContentAlignment="Center" Margin="0,0,0,20"/>
             <TextBlock Text="Podium Genres" Margin="0,0,0,5"/>
             <TextBox x:Name="tbGenres" Height="25" VerticalContentAlignment="Center" Margin="0,0,0,20"/>
             <Grid Margin="0,0,0,20">

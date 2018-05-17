@@ -12,8 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-using Xceed.Wpf.Toolkit;
-
 namespace Project_OP4_Festival_Planner
 {
     /// <summary>
@@ -43,7 +41,22 @@ namespace Project_OP4_Festival_Planner
 
         private void btnMaakProgramma_Click(object sender, RoutedEventArgs e)
         {
-
+            if (tbProgrammaNaam.Text.Length > 0 && cbPodiums.SelectedIndex != 0 && dtpBeginTijd.Text.Length > 0 && dtpEindTijd.Text.Length > 0)
+            {
+                if (dbConnection.InsertProgramma(tbProgrammaNaam.Text, cbPodiums.SelectedValue.ToString(), dtpBeginTijd.Text, dtpEindTijd.Text))
+                {
+                    MessageBox.Show("Het nieuwe programma is toegevoegd", "Programma opgeslagen", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Kon het programma niet opslaan", "Kon niet opslaan", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Je moet alle gegevens invullen om een programma te kunnen toeveogen", "Verkeerde Gegevens", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void btnNewPodium_Click(object sender, RoutedEventArgs e)

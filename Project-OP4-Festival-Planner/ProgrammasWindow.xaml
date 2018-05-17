@@ -39,7 +39,7 @@
                     <StackPanel Width="180" Orientation="Vertical">
                         <TextBlock Foreground="White" FontSize="18" Text="{Binding programmaNaam}"/>
                         <TextBlock Foreground="White" FontSize="14" Text="{Binding podiumNaam}"/>
-                        <TextBlock Foreground="White" FontSize="14" Text="{Binding beginTijd}"/>
+                        <TextBlock Foreground="White" FontSize="14" Text="{Binding tijd}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

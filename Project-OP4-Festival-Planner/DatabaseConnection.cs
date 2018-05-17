@@ -47,7 +47,7 @@ namespace Project_OP4_Festival_Planner
             conn.Open();
 
             MySqlCommand sqlCommand = conn.CreateCommand();
-            sqlCommand.CommandText = "SELECT programmas.id as programmaID, podiums.naam as podiumNaam, programmas.naam as programmaNaam, CONCAT(HOUR(opbouwTijd),':',CASE WHEN (MINUTE(opbouwTijd) < 10) THEN CONCAT('0',MINUTE(opbouwTijd)) ELSE MINUTE(opbouwTijd) END) as beginTijd , CONCAT(HOUR(afbouwTijd),':',CASE WHEN (MINUTE(afbouwTijd) < 10) THEN CONCAT('0',MINUTE(afbouwTijd)) ELSE MINUTE(afbouwTijd) END) as eindTijd FROM programmas INNER JOIN podiums ON podiums.id = programmas.id;";
+            sqlCommand.CommandText = "SELECT programmas.id as programmaID, podiums.naam as podiumNaam, programmas.naam as programmaNaam, CONCAT(DATE_FORMAT(programmas.aanvangsTijd, '%H:%i'),' - ',DATE_FORMAT(programmas.eindTijd, '%H:%i')) as tijd FROM programmas INNER JOIN podiums ON programmas.podiumID = podiums.id";
             MySqlDataReader dataReader = sqlCommand.ExecuteReader();
 
             DataTable dataTable = new DataTable();
@@ -134,7 +134,7 @@ namespace Project_OP4_Festival_Planner
             conn.Open();
 
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT * FROM podiums";
+            command.CommandText = "SELECT id, naam FROM podiums";
 
             MySqlDataReader reader = command.ExecuteReader();
 
@@ -142,6 +142,12 @@ namespace Project_OP4_Festival_Planner
             dataTable.Load(reader);
 
             conn.Close();
+
+            DataRow dataRow = dataTable.NewRow();
+            dataRow[0] = 0;
+            dataRow[1] = "Selecteer een Podium";
+
+            dataTable.Rows.InsertAt(dataRow, 0);
 
             return dataTable;
         }
@@ -162,6 +168,36 @@ namespace Project_OP4_Festival_Planner
             conn.Close();
 
             return dataTable;
+        }
+
+        public bool InsertProgramma(string sProgrammaNaam, string sPodiumID, string sBeginTijd, string sEindTijd)
+        {
+            bool bSuccess;
+            try
+            {
+                conn.Open();
+
+                MySqlCommand sqlCommand = conn.CreateCommand();
+                sqlCommand.CommandText = "INSERT INTO programmas (naam, podiumID, aanvangsTijd, eindTijd) VALUES (@naam, @podium, STR_TO_DATE(@beginTijd,'%d %b %Y %k:%i'), STR_TO_DATE(@eindTijd,'%d %b %Y %k:%i'))";
+                sqlCommand.Parameters.AddWithValue("@naam", sProgrammaNaam);
+                sqlCommand.Parameters.AddWithValue("@podium", sPodiumID);
+                sqlCommand.Parameters.AddWithValue("@beginTijd", sBeginTijd);
+                sqlCommand.Parameters.AddWithValue("@eindTijd", sEindTijd);
+
+                sqlCommand.ExecuteNonQuery();
+
+                bSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                bSuccess = false;
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return bSuccess;
         }
 
         public bool InsertPodium(string sPodiumName, string sGenres, string sOpbouwTijd, string sAfbouwTijd)

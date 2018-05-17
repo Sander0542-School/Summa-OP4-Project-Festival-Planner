@@ -27,7 +27,7 @@
 
     <Style TargetType="xctk:DateTimePicker">
         <Setter Property="Format" Value="Custom"/>
-        <Setter Property="FormatString" Value="dd MMM yyyy hh:mm"/>
+        <Setter Property="FormatString" Value="dd MMM yyyy HH:mm"/>
         <Setter Property="Height" Value="25"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
