@@ -17,6 +17,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -28,7 +30,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Orientation="Vertical">
             <Image MaxHeight="200" Margin="0,0,0,20"/>
             <TextBlock x:Name="tbPodiumNaam" Text="Podium Naam" FontSize="20" Margin="0,0,0,10"/>
             <TextBlock x:Name="tbGenres" Text="Genres" FontSize="14" Margin="0,0,0,10"/>
@@ -45,7 +47,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Row="1" Grid.Column="5">
+        <Button x:Name="btnAddItem" Grid.Row="3" Grid.Column="3" Height="40" Content="Voeg item toe" Click="btnAddItem_Click"/>
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="5">
             <TextBlock Text="Band Informatie" FontSize="20" Margin="0,0,0,10"/>
             <TextBlock x:Name="tbBandNaam" Text="Naam" FontSize="14" Margin="0,0,0,5"/>
             <TextBlock x:Name="tbBandGenre" Text="Genre" FontSize="14" Margin="0,0,0,5"/>

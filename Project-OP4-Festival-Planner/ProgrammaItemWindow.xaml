@@ -1,0 +1,58 @@
+﻿<Window x:Class="Project_OP4_Festival_Planner.ProgrammaItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_OP4_Festival_Planner"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Nieuw Programma Item" Width="500" WindowStartupLocation="CenterScreen" SizeToContent="Height" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="40"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+            <TextBlock Text="Podium" Margin="0,0,0,5"/>
+            <ComboBox x:Name="cbBands" SelectedValuePath="id" DisplayMemberPath="naam" Margin="0,0,0,20"/>
+            <TextBlock Text="Band Kosten" Margin="0,0,0,5"/>
+            <TextBox x:Name="tbBandKosten" Height="25" VerticalContentAlignment="Center" Margin="0,0,0,20"/>
+            <Grid Margin="0,0,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical">
+                    <TextBlock Text="Begin Tijd" Margin="0,0,0,5"/>
+                    <xctk:DateTimePicker x:Name="dtpBeginTijd"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Vertical">
+                    <TextBlock Text="Eind Tijd" Margin="0,0,0,5"/>
+                    <xctk:DateTimePicker x:Name="dtpEindTijd"/>
+                </StackPanel>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnMaakProgramma" Grid.Column="1" Content="Voeg toe" Width="150" Height="25" HorizontalAlignment="Right"/>
+                <Button x:Name="btnNewBand" Grid.Column="0" Content="Nieuwe band" Width="150" Height="25" HorizontalAlignment="Left"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

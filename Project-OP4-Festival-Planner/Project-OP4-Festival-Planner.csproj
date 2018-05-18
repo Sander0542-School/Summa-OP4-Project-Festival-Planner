@@ -108,6 +108,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ProgrammaItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProgrammasWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +133,9 @@
     </Compile>
     <Compile Include="ProgrammaDataWindow.xaml.cs">
       <DependentUpon>ProgrammaDataWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgrammaItemWindow.xaml.cs">
+      <DependentUpon>ProgrammaItemWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProgrammasWindow.xaml.cs">
       <DependentUpon>ProgrammasWindow.xaml</DependentUpon>

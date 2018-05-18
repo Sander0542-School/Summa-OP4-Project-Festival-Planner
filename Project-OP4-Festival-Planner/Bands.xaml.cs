@@ -21,7 +21,7 @@ namespace Project_OP4_Festival_Planner
     {
         private DatabaseConnection dbConnection = new DatabaseConnection();
 
-        int ibandID = 6;
+        int ibandID = 0;
         public Bands()
         {
             InitializeComponent();

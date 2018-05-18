@@ -70,5 +70,10 @@ namespace Project_OP4_Festival_Planner
             ProgrammasWindow programmasWindow = new ProgrammasWindow();
             programmasWindow.Show();
         }
+
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
